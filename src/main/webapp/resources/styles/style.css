@@ -1,0 +1,313 @@
+/**
+ * @auth Joker
+ * @create 2015-4-9
+ */
+
+ /*common style add by jokcy*/
+ .main-wrapper{
+     padding: 20px 0;
+ }
+ body{
+     overflow-x: hidden; 
+     font-family: 'microsoft yahei';
+ }
+ .mr10{
+ 	margin-right: 10px;
+ }
+ .ml10{
+	margin-left:10px;
+ }
+ .breadcrumb{
+     font-size: 14px;
+ }
+ .line{
+     display: block;
+     margin-bottom: 20px;
+ }
+ .line:before, .line:after{
+     content: ' ';
+     display: block;
+ }
+ .line:after{
+     clear: both;
+ }
+ select:disabled{
+     opacity: .7;
+     cursor: not-allowed;
+ }
+ .btn-default{
+     background-color: #fff;
+     color: #333;
+ }
+ .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
+     background-color: #ebebeb;
+ }
+ .dropdown-menu table{
+ 	min-width: 200px;
+ }
+.breadcrumb-box{
+	border-bottom: 1px solid #eee;
+	padding-bottom:20px; 
+}
+
+/*****  scroll bar  ****/
+::-webkit-scrollbar {
+    height: 12px;
+    width: 5px;
+    background: rgba(200,200,200,.2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #393812;
+    -webkit-border-radius: 1ex;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-corner {
+    background: #000;
+}
+
+
+/*help classes*/
+a{
+	cursor: pointer;
+}
+.form-error{
+	color: red;
+}
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn{
+	opacity: .5;
+}
+.search{
+	position: relative;
+}
+.search .drop-list{
+	position: absolute;
+	left: 0;
+	right: 0;
+	background: #fff;
+	z-index: 101;
+	border: 1px solid #aaa;
+}
+.search .drop-item{
+	display: block;
+	border-top: 1px solid #eee;
+	padding: 10px 20px;
+}
+.search .drop-item:hover{
+	background: #eee;
+}
+.search-form input[datepicker-popup]{
+    width: 120px !important;
+}
+
+
+/****************  filter select  ****************/
+.filter-select-container{
+	padding: 10px 20px;
+	padding-right: 40px;
+	border: 1px solid #eee;
+	border-bottom-style: dashed;
+	position: relative;
+	height: auto;
+	overflow: hidden;
+}
+.filter-select-container + .filter-select-container{
+	border-top: 0;
+}
+.filter-select-container:last-child{
+	border-bottom-style: solid;
+}
+.filter-select-container.min{
+	height: 37px !important;
+}
+.filter-search-input{
+	border: 0;
+	border-bottom: 1px solid #aaa;
+	line-height: 18px;
+	padding: 0 5px;
+	margin-right: 20px;
+}
+.filter-search-input:focus{
+	outline: none;
+}
+.filter-selected-item{
+	position: relative;
+	display: inline-block;
+	line-height: 22px;
+	margin-right: 20px;
+	background: #ff6600;
+	border-radius: 3px;
+	padding: 0 20px;
+	color: #fff;
+}
+.filter-selected-item .glyphicon{
+	position: absolute;
+	cursor: pointer;
+	right: 5px;
+	top: 4px;
+}
+.filter-select-item{
+	display: inline-block;
+	color: #777;
+	margin-right: 20px;
+	line-height: 22px;
+}
+.filter-toggle{
+	position: absolute;
+	line-height: 22px;
+	right: 20px;
+	top: 10px;
+}
+
+
+.default-bg {
+  background-color: #323232;
+}
+
+/*给分页框的内容区加边距和边框*/
+.tab-content{
+	border: 1px solid lightgray;
+	border-top: none;
+	padding: 15px;
+	border-radius: 0 0 4px 4px;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none;
+  border-color: #DDDDDD #DDDDDD rgba(0, 0, 0, 0);
+  border-bottom: 1px solid #fff !important;
+  border-image: none;
+  border-style: solid;
+  border-width: 1px;
+  color: #555555;
+  cursor: default;
+}
+
+/******** ups loop menu  **********/
+.ups-loop-menu{
+	position: fixed;
+	width: 220px;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	overflow-y: auto;
+}
+.ups-menu-systems, .ups-menu-wrapper{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.ups-menu-systems li, .ups-menu-wrapper li{
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 10px;
+}
+.ups-menu-item .parent, .ups-menu-item .son{
+	display: block;
+	text-decoration: none;
+}
+.ups-menu-item .son:hover, .ups-menu-item .son:active, .ups-menu-item .son:visited, .ups-menu-item .son:focus{
+	text-decoration: none;
+}
+.ups-menu-item.active{
+	background-color: #1f1f1f;
+}
+.ups-menu-item .parent, .ups-menu-item .son{
+	cursor: pointer;
+	padding: 5px 0;
+	color: #eee;
+	font-size: 13px;
+}
+.ups-menu-item.active > .son{
+	color: #337ab7;
+}
+.ups-menu-item .parent{
+	font-size: 14px;
+	padding: 10px 0;
+}
+.ups-menu-item .parent .ups-menu-item .parent{
+	font-size: 13px;
+}
+.ups-menu-wrapper{
+	overflow: hidden;
+	max-height: 0;
+	-webkit-transition: all .3s;
+	-o-transition: all .3s;
+	transition: all .3s;
+}
+.ups-menu-top{
+	height: auto !important;
+	max-height: 10000px;
+}
+.ups-menu-item.active .ups-menu-wrapper{
+	max-height: 1000px;
+}
+.ups-menu-item .ups-active-toggle{
+	font-size: 12px;
+}
+.selected-system{
+	line-height: 60px;
+	color: #fff !important;
+	padding-left: 20px;
+	padding-right: 10px;
+	display: block;
+	background-color: #0061bc;
+	border-bottom: 1px solid #0061bc;
+	font-size: 14px;
+}
+.selected-system:hover, .selected-system:focus, .selected-system:active, .selected-system:visited{
+	color: #dedede;
+}
+.ups-menu-systems{
+	background-color: #fff;
+	overflow: hidden;
+	max-height: 0;
+	-webkit-transition: all .3s;
+	-o-transition: all .3s;
+	transition: all .3s;
+}
+.ups-menu-systems.active{
+	max-height: 500px;
+}
+.ups-menu-system{
+	line-height: 40px;
+	display: block;
+}
+.ups-menu-system:hover{
+	background-color: #eee;
+}
+
+/***********  btn  ************/
+.btn-primary{
+	background-color: #0061bc;
+	border-color: #0061bc;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary{
+	background-color: #6caeff;
+	border-color: #6caeff;
+}
+.btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active{
+	background-color: #6caeff;
+	border-color: #6caeff;
+}
+
+
+/*tabset*/
+.tab-btn{
+	margin-right: 20px;
+}
+.tab-container{
+	margin-top: 20px;
+}
+
+/*select-inline*/
+.select-inline{
+	width: 250px;
+}
+.select-inline .ui-select-match{
+	overflow: hidden;
+}

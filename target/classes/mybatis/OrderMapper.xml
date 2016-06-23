@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zstu.bysj.cmgs.dao.OrderMapper">
+
+	<select id="findList" resultType="com.zstu.bysj.cmgs.model.entity.OrderEntity">
+		SELECT
+		*
+		FROM
+		(
+			SELECT 
+			o.*, b.name as businessName, s1.name as lv1ServiceName, s2.name as lv2ServiceName
+			FROM 
+			`car_order` o,
+			`car_business` b,
+			`car_service_type` s1,
+			`car_service_type` s2
+			where 
+			o.isDeleted = 0
+			and b.id = o.businessId
+			and s1.id = o.lv1ServiceType
+			and s2.id = o.lv2ServiceType
+		) as t
+		WHERE 1 = 1
+		<if test="userPhone != null and userPhone != ''">
+			and t.userPhone LIKE CONCAT('%', #{userPhone,jdbcType=VARCHAR}, '%')
+		</if>
+		<if test="businessName != null and businessName != ''">
+			and t.businessName LIKE CONCAT('%', #{businessName,jdbcType=VARCHAR}, '%')
+		</if>
+		ORDER BY t.id DESC
+		<if test="start != null and pageSize != null">
+			<include refid="page"></include>
+		</if>
+	</select>
+	
+	<select id="findCount" resultType="int">
+		SELECT 
+		count(*) 
+		FROM
+		(
+			SELECT 
+			o.*, b.name as businessName, s1.name as lv1ServiceName, s2.name as lv2ServiceName
+			FROM 
+			`car_order` o,
+			`car_business` b,
+			`car_service_type` s1,
+			`car_service_type` s2
+			where 
+			o.isDeleted = 0
+			and b.id = o.businessId
+			and s1.id = o.lv1ServiceType
+			and s2.id = o.lv2ServiceType
+		) as t
+		WHERE 1 =1
+		<if test="userPhone != null and userPhone != ''">
+			and t.userPhone LIKE CONCAT('%', #{userPhone,jdbcType=VARCHAR}, '%')
+		</if>
+		<if test="businessName != null and businessName != ''">
+			and t.businessName LIKE CONCAT('%', #{businessName,jdbcType=VARCHAR}, '%')
+		</if>
+		<if test="start != null and pageSize != null">
+			<include refid="page"></include>
+		</if>
+	</select>
+	
+	<select id="findById" resultType="com.zstu.bysj.cmgs.model.entity.OrderEntity"
+		parameterType="int">
+		<![CDATA[ 
+			SELECT *
+			FROM car_order
+			WHERE id = #{id,jdbcType=INTEGER}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="com.zstu.bysj.cmgs.model.entity.OrderEntity">
+		INSERT 
+		INTO 
+		car_order
+		(
+			type,
+			businessId,
+			userId,
+			userPhone,
+			lv1ServiceType,
+			lv2ServiceType,
+			packageName,
+			paidTime,
+			modifyTime
+		)
+		values 
+		(
+			#{type},
+			#{businessId},
+			#{userId},
+			#{userPhone},
+			#{lv1ServiceType},
+			#{lv2ServiceType},
+			#{packageName},
+			now(),
+		 	now()
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.zstu.bysj.cmgs.model.entity.OrderEntity">
+		UPDATE car_order
+		<set>
+			<if test="type != null">
+				type = #{type,jdbcType=INTEGER},
+			</if>
+			<if test="businessId != null">
+				businessId = #{businessId,jdbcType=INTEGER},
+			</if>
+			<if test="userId != null">
+				userId = #{userId,jdbcType=INTEGER},
+			</if>
+			<if test="userPhone != null">
+				userPhone = #{userPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="lv1ServiceType != null">
+				lv1ServiceType = #{lv1ServiceType,jdbcType=INTEGER},
+			</if>
+			<if test="lv2ServiceType != null">
+				lv2ServiceType = #{lv2ServiceType,jdbcType=INTEGER},
+			</if>
+			<if test="packageName != null">
+				packageName = #{packageName,jdbcType=VARCHAR},
+			</if>
+			<if test="isDeleted != null">
+				isDeleted = #{isDeleted,jdbcType=INTEGER},
+			</if>
+			<if test="true">
+				modifyTime = now()
+			</if>
+		</set>
+		WHERE id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<sql id="page">
+		limit #{start},#{pageSize}
+	</sql>
+
+</mapper>

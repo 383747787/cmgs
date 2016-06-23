@@ -1,0 +1,30 @@
+{
+  "name": "angularext",
+  "version": "0.1.1",
+  "description": "angularjs extends",
+  "main": "angularExt.js",
+  "moduleType": [
+    "amd"
+  ],
+  "authors": [
+    "yeyang"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.1",
+    "commit": "709c84036cd674a6276ceeb252b825b6a62bf86a"
+  },
+  "_source": "git@192.168.1.128:huadong.yin/angularext.git",
+  "_target": "0.1.1",
+  "_originalSource": "git@192.168.1.128:huadong.yin/angularext.git",
+  "_direct": true
+}

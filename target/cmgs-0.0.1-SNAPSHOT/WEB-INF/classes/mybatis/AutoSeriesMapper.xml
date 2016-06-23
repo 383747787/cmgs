@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zstu.bysj.cmgs.dao.AutoSeriesMapper">
+
+	<select id="findList" resultType="com.zstu.bysj.cmgs.model.entity.AutoSeries">
+		SELECT * FROM `car_type_series`
+		where 
+			brandId = #{brandId,jdbcType=INTEGER}
+			<if test="name != null and name != ''">
+				and name LIKE CONCAT('%', #{name,jdbcType=VARCHAR}, '%')
+			</if>
+		ORDER BY id ASC
+		<if test="start != null and pageSize != null">
+			<include refid="page"></include>
+		</if>
+	</select>
+	
+	<select id="findCount" resultType="int">
+		SELECT count(*) FROM `car_type_series`
+		where 
+			brandId = #{brandId,jdbcType=INTEGER}
+			<if test="name != null and name != ''">
+				and name LIKE CONCAT('%', #{name,jdbcType=VARCHAR}, '%')
+			</if>
+	</select>
+	
+	<select id="findById" resultType="com.zstu.bysj.cmgs.model.entity.AutoSeries"
+		parameterType="int">
+		<![CDATA[ 
+			SELECT *
+			FROM car_type_series
+			WHERE id = #{id,jdbcType=INTEGER}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="com.zstu.bysj.cmgs.model.entity.AutoSeries">
+		INSERT 
+		INTO 
+		car_type_series
+		(
+			id,
+			brandId,
+			name,
+			mark,
+			guidePriceLow,
+			guidePriceHigh,
+			classify,
+			washCarType,
+			createTime,
+			modifyTime,
+			isValid
+		)
+		values 
+		(
+			#{id,jdbcType=INTEGER}, 
+			#{brandId,jdbcType=INTEGER},
+			#{name,jdbcType=VARCHAR},
+			#{mark,jdbcType=VARCHAR},
+			#{guidePriceLow,jdbcType=DECIMAL},
+			#{guidePriceHigh,jdbcType=DECIMAL},
+			#{classify,jdbcType=VARCHAR}, 
+			#{washCarType,jdbcType=TINYINT},
+			now(),
+			now(),
+			#{isValid,jdbcType=TINYINT}
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.zstu.bysj.cmgs.model.entity.AutoSeries">
+		UPDATE car_type_series
+		<set>
+			<if test="brandId != null and brandId > 0">
+				brandId = #{brandId,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="mark != null">
+				mark = #{mark,jdbcType=VARCHAR},
+			</if>
+			<if test="guidePriceLow != null">
+				guidePriceLow = #{guidePriceLow,jdbcType=DECIMAL},
+			</if>
+			<if test="guidePriceHigh != null">
+				guidePriceHigh = #{guidePriceHigh,jdbcType=DECIMAL},
+			</if>
+			<if test="classify != null">
+				classify = #{classify,jdbcType=VARCHAR},
+			</if>
+			<if test="washCarType != null and washCarType > 0">
+				washCarType = #{washCarType,jdbcType=TINYINT},
+			</if>
+			<if test="washType != null and washType > 0">
+				washType = #{washType,jdbcType=TINYINT},
+			</if>
+			<if test="isValid != null">
+				isValid = #{isValid,jdbcType=INTEGER},
+			</if>
+			<if test="true">
+				modifyTime = NOW()
+			</if>
+		</set>
+		WHERE id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<sql id="page">
+		limit #{start},#{pageSize}
+	</sql>
+
+</mapper>

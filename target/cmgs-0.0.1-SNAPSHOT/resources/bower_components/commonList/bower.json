@@ -1,0 +1,18 @@
+{
+  "name": "commonList",
+  "main": "index.js",
+  "authors": [
+    "gete@xiaokakeji.com"
+  ],
+  "description": "管理系统中通用的一些方法",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

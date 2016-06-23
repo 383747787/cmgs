@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zstu.bysj.cmgs.dao.MenuDataMapper">
+
+	<select id="findUser" resultType="com.zstu.bysj.cmgs.model.entity.MenuDataEntity">
+		select
+		id, name, password, realName
+		from user
+		where parent = 0
+	</select>
+	
+	<insert id="addUser">
+		insert into user
+		(name, password,realName)
+		values
+		(#{name,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{realName,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="updateUser">
+		update user
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="password !=null">
+				password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="realName != null">
+				realName = #{realName,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>

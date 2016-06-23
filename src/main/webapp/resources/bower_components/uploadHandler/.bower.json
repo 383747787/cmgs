@@ -1,0 +1,33 @@
+{
+  "name": "uploadHandler",
+  "authors": [
+    "gete@xiaokakeji.com"
+  ],
+  "description": "管理系统 angular 上传组件，适用于又拍云服务",
+  "main": "index.js",
+  "moduleType": [],
+  "keywords": [
+    "upload"
+  ],
+  "license": "MIT",
+  "homepage": "git@192.168.1.10:fecomponents/uploadHandler.git",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ng-file-upload": "~10.0.2"
+  },
+  "_release": "0adbfa9f1f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "0adbfa9f1f5b298548d724c688259b1b37196203"
+  },
+  "_source": "git@192.168.1.10:fecomponents/uploadHandler.git",
+  "_target": "*",
+  "_originalSource": "git@192.168.1.10:fecomponents/uploadHandler.git"
+}

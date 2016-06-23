@@ -1,0 +1,26 @@
+{
+  "name": "fixtips",
+  "main": "index.js",
+  "version": "0.0.1",
+  "description": "fixtips components",
+  "keywords": [
+    "fixtips"
+  ],
+  "dependencies": {
+    "zepto": "git://github.com/components/zepto.git#1.1.6"
+  },
+  "authors": [
+    "yeyang"
+  ],
+  "license": "MIT",
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.1",
+    "commit": "bdd051020b07583ddc0eda71ba75966663b86c5e"
+  },
+  "_source": "git@192.168.1.128:huadong.yin/fixtips.git",
+  "_target": "0.0.1",
+  "_originalSource": "git@192.168.1.128:huadong.yin/fixtips.git",
+  "_direct": true
+}

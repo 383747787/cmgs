@@ -1,0 +1,30 @@
+{
+  "name": "utils",
+  "version": "0.0.1",
+  "description": "xiaoka use utils类库",
+  "main": "index.js",
+  "moduleType": [
+    "amd"
+  ],
+  "authors": [
+    "yeyang"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.1",
+    "commit": "25ec422c5ad624ae56dc668c87da825257fc74ae"
+  },
+  "_source": "git@192.168.1.128:huadong.yin/utils.git",
+  "_target": "~0.0.1",
+  "_originalSource": "git@192.168.1.128:huadong.yin/utils.git",
+  "_direct": true
+}

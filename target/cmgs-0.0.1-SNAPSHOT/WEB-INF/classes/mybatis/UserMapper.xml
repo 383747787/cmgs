@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zstu.bysj.cmgs.dao.UserMapper">
+
+	<select id="findByName" resultType="com.zstu.bysj.cmgs.model.entity.UserEntity">
+		select
+			*
+		from 
+			user
+		where 
+			name = #{name,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="findById" resultType="com.zstu.bysj.cmgs.model.entity.UserEntity">
+		select
+			*
+		from 
+			user
+		where 
+			id = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<insert id="insert">
+		insert 
+		into 
+		user
+		(
+			name, 
+			password,
+			realName,
+			email,
+			createTime,
+			modifyTime
+		)
+		values
+		(
+			#{name,jdbcType=VARCHAR},
+			#{password,jdbcType=VARCHAR},
+			#{realName,jdbcType=VARCHAR},
+			#{email,jdbcType=VARCHAR},
+			now(),
+			now()
+		)
+	</insert>
+	
+	<update id="update">
+		update user
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="password !=null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				realName = #{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="true">
+				modifyTime = now()
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>

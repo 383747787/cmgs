@@ -1,0 +1,24 @@
+{
+  "name": "uploadHandler",
+  "authors": [
+    "gete@xiaokakeji.com"
+  ],
+  "description": "管理系统 angular 上传组件，适用于又拍云服务",
+  "main": "index.js",
+  "moduleType": [],
+  "keywords": [
+    "upload"
+  ],
+  "license": "MIT",
+  "homepage": "git@192.168.1.10:fecomponents/uploadHandler.git",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ng-file-upload": "~10.0.2"
+  }
+}

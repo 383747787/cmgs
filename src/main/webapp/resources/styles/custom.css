@@ -1,0 +1,251 @@
+img.icon {
+	width: 20px;
+	height: 20px;
+}
+
+hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 0;
+	border-top: 1px solid #eee;
+}
+
+.tool-bar {
+	position: absolute;
+	top: 15px;
+	right: 25px;
+}
+
+.sub-tool-bar {
+	position: absolute;
+	top: -10px;
+	right: 5px;
+}
+
+td.alr {
+	text-align: right;
+}
+
+.modal {
+	display: block;
+}
+
+.modal {
+	position: fixed;
+	display: none;
+	overflow: auto;
+	overflow-y: scroll;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1050;
+	-webkit-overflow-scrolling: touch;
+	outline: 0;
+}
+
+.modal-backdrop.am-fade {
+	opacity: .5;
+	transition: opacity .15s linear;
+	&.
+	ng-enter
+	{
+	opacity
+	:
+	0;
+	&.
+	ng-enter-active
+	{
+	opacity
+	:
+	.5;
+}
+
+}
+&
+.ng-leave {
+	opacity: .5;
+	&.
+	ng-leave-active
+	{
+	opacity
+	:
+	0;
+}
+
+}
+}
+body.modal-open {
+	overflow-y: visible !important;
+}
+
+.float-e-margins .btn-mini {
+	margin-bottom: 0px;
+	padding: 2px 8px 2px 8px;
+}
+
+input.mini {
+	width: 45px;
+	background-color: #FFFFFF;
+	background-image: none;
+	border: 1px solid #e5e6e7;
+	color: inherit;
+	padding: 2px 5px;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s
+		ease-in-out 0s;
+}
+
+.alert-danger, .alert-error {
+	color: #b94a48;
+	background-color: #f2dede;
+	border-color: #eed3d7;
+}
+
+.txt-warning {
+	color: #b94a48;
+	font-style: italic;
+}
+
+/* iCheck plugin Square skin, green
+----------------------------------- */
+.icheckbox_square-green, .iradio_square-green {
+	display: inline-block;
+	*display: inline;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	width: 22px;
+	height: 22px;
+	background: url("../img/green.png") no-repeat;
+	border: none;
+	cursor: pointer;
+}
+
+.icheckbox_square-green {
+	background-position: 0 0;
+}
+
+.icheckbox_square-green.hover {
+	background-position: -24px 0;
+}
+
+.icheckbox_square-green.checked {
+	background-position: -48px 0;
+}
+
+.icheckbox_square-green.disabled {
+	background-position: -72px 0;
+	cursor: default;
+}
+
+.icheckbox_square-green.checked.disabled {
+	background-position: -96px 0;
+}
+
+.iradio_square-green {
+	background-position: -120px 0;
+}
+
+.iradio_square-green.hover {
+	background-position: -144px 0;
+}
+
+.iradio_square-green.checked {
+	background-position: -168px 0;
+}
+
+.iradio_square-green.disabled {
+	background-position: -192px 0;
+	cursor: default;
+}
+
+.iradio_square-green.checked.disabled {
+	background-position: -216px 0;
+}
+
+/* HiDPI support */
+@media ( -o-min-device-pixel-ratio : 5/4) , ( -webkit-min-device-pixel-ratio :
+		1.25) , ( min-resolution : 120dpi) {
+	.icheckbox_square-green, .iradio_square-green {
+		background-image: url(../img/green@2x.png);
+		-webkit-background-size: 240px 24px;
+		background-size: 240px 24px;
+	}
+}
+
+.radio-inline {
+	margin-left: 0px;
+}
+
+.checkbox-inline {
+	margin-left: 0px;
+}
+
+.special-service-box input {
+	background-color: #FFFFFF;
+	background-image: none;
+	border: 1px solid #e5e6e7;
+	color: #d58512;
+	padding: 3px 2px 3px 2px;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s
+		ease-in-out 0s;
+	border-radius: 4px;
+	font-weight: bold;
+}
+
+.special-service-box input.min {
+	width: 50px;
+}
+
+.special-service-box  input.mid {
+	width: 150px;
+}
+
+/* input.ng-invalid {
+	border: 1px solid red;
+}
+
+input.ng-valid {
+	border: 1px solid green;
+} */
+
+input.txt {
+	background-color: #FFFFFF;
+	background-image: none;
+	border: 1px solid #e5e6e7;
+	color: inherit;
+	padding: 2px;
+	color: #d58512;
+}
+
+.txt-min {
+	width: 65px;
+}
+
+.m-t-3 {
+	margin-top: 3px;
+}
+
+.m-b-5 {
+	margin-bottom: 5px;
+}
+
+td.alc,th.alc {
+	text-align: center;
+}
+
+.btn-big-sm {
+	padding: 3px 5px;
+	font-size: 12px;
+	line-height: 1.1;
+	border-radius: 3px;
+}
+.g-loading{
+	padding: 10px;
+	position:fixed;
+	top:10px;
+	left:42%;
+	z-index:99999;
+	background: #337AB7;
+	border-radius: 4px;
+}

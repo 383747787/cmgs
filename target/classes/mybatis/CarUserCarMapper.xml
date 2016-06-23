@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zstu.bysj.cmgs.dao.CarUserCarMapper">
+
+	<select id="findList" resultType="com.zstu.bysj.cmgs.model.entity.CarUserCarEntity">
+		SELECT
+			c.*,
+			b.`name` as brandName,
+			s.`name` as seriesName,
+			m.`name` as modelName
+		FROM
+			car_user_car c,
+			car_type_brand b,
+			car_type_series s,
+			car_type_model m
+		WHERE
+			c.brandId = b.id
+			AND c.isDeleted = 0
+			AND c.seriesId = s.id
+			AND c.modelId = m.id
+		<if test="carNum != null and carNum != ''">
+			and carNum = #{carNum,jdbcType=VARCHAR}
+		</if>
+		ORDER BY c.id DESC
+		<if test="start != null and pageSize != null">
+			<include refid="page"></include>
+		</if>
+	</select>
+	
+	<select id="findCount" resultType="int">
+		SELECT 
+			count(*) 
+		FROM
+			car_user_car c,
+			car_type_brand b,
+			car_type_series s,
+			car_type_model m
+		WHERE
+			c.brandId = b.id
+			AND c.seriesId = s.id
+			AND c.modelId = m.id
+		<if test="carNum != null and carNum != ''">
+			and carNum = #{carNum,jdbcType=VARCHAR}
+		</if>
+		<if test="start != null and pageSize != null">
+			<include refid="page"></include>
+		</if>
+	</select>
+	
+	<select id="findById" resultType="com.zstu.bysj.cmgs.model.entity.CarUserCarEntity"
+		parameterType="int">
+		<![CDATA[ 
+			SELECT *
+			FROM car_user_car
+			WHERE id = #{id,jdbcType=INTEGER}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="com.zstu.bysj.cmgs.model.entity.CarUserCarEntity">
+		INSERT 
+		INTO 
+		car_user_car
+		(
+		 	id,
+			userId,
+			carNum,
+			brandId,
+			seriesId,
+			modelId,
+			kilometers,
+			vehicleFrameNo,
+			createTime,
+			modifyTime
+		)
+		values 
+		(
+			#{id},
+			#{userId},
+			#{carNum},
+			#{brandId},
+			#{seriesId},
+			#{modelId},
+			#{kilometers},
+			#{vehicleFrameNo},
+			now(),
+		 	now()
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.zstu.bysj.cmgs.model.entity.CarUserCarEntity">
+		UPDATE car_user_car
+		<set>
+			<if test="userId != null">
+				userId = #{userId},
+			</if>
+			<if test="carNum != null">
+				carNum = #{carNum},
+			</if>
+			<if test="brandId != null">
+				brandId = #{brandId},
+			</if>
+			<if test="seriesId != null">
+				seriesId = #{seriesId},
+			</if>
+			<if test="modelId != null">
+				modelId = #{modelId},
+			</if>
+			<if test="isDeleted != null">
+				isDeleted = #{isDeleted},
+			</if>
+			<if test="kilometers != null">
+				kilometers = #{kilometers},
+			</if>
+			<if test="vehicleFrameNo != null">
+				vehicleFrameNo = #{vehicleFrameNo},
+			</if>
+		 	<if test="true">
+	 	 		modifyTime = now()
+	 	 	</if>
+		</set>
+		WHERE id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<sql id="page">
+		limit #{start},#{pageSize}
+	</sql>
+
+</mapper>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zstu.bysj.cmgs.dao.AutoModelMapper">
+
+	<select id="findList" resultType="com.zstu.bysj.cmgs.model.entity.AutoModel">
+		select * from car_type_model where seriesId=#{search.seriesId}
+		<if test="search.name!=null and search.name.length()>0">
+			and name like concat("%",#{search.name},"%")
+		</if>
+		<if test="search.displacement!=null and search.displacement.length()>0">
+			and displacement=#{search.displacement}
+		</if>
+		<if test="search.carEngineType!=null and search.carEngineType.length()>0">
+			and carEngineType=#{search.carEngineType}
+		</if>
+		<if test="start != null and pageSize != null">
+			<include refid="page"></include>
+		</if>
+	</select>
+
+	<select id="findCount" resultType="int">
+		select count(*) from car_type_model WHERE seriesId=#{search.seriesId}
+		<if test="search.name!=null and search.name.length()>0">
+			and name like concat("%",#{search.name},"%")
+		</if>
+		<if test="search.displacement!=null and search.displacement.length()>0">
+			and displacement=#{search.displacement}
+		</if>
+		<if test="search.carEngineType!=null and search.carEngineType.length()>0">
+			and carEngineType=#{search.carEngineType}
+		</if>
+	</select>
+	
+	<select id="findById" resultType="com.zstu.bysj.cmgs.model.entity.AutoModel" parameterType="int">
+		<![CDATA[ 
+			SELECT *
+			FROM car_type_model
+			WHERE id = #{id,jdbcType=INTEGER}
+		]]>
+	</select>
+
+	<insert id="insert" parameterType="com.zstu.bysj.cmgs.model.entity.AutoModel"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO car_type_model
+		(
+			id,
+			seriesId,
+			name,
+			guidePrice,
+			createTime,
+			modifyTime,
+			displacement,
+			carHorsepower,
+			carEngineType,
+			carValue,
+			carSeats,
+			frontTyreSize,
+			rearTyreSize,
+			modelWashType,
+			washType,
+			isValid
+		)
+		values (
+			#{id,jdbcType=INTEGER},
+			#{seriesId,jdbcType=INTEGER},
+			#{name,jdbcType=VARCHAR},
+			#{guidePrice,jdbcType=DECIMAL},
+			now(),
+			now(),
+			#{displacement},
+			#{carHorsepower},
+			#{carEngineType},
+			#{carValue},
+			#{carSeats},
+			#{frontTyreSize},
+			#{rearTyreSize},
+			#{modelWashType},
+			#{washType},
+			#{isValid,jdbcType=TINYINT}
+		)
+	</insert>
+
+	<update id="update">
+		UPDATE car_type_model
+		<set>
+			<if test="seriesId != null and seriesId > 0">
+				seriesId = #{seriesId,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="guidePrice != null">
+				guidePrice = #{guidePrice,jdbcType=DECIMAL},
+			</if>
+			<if test="carSize != null">
+				carSize = #{carSize,jdbcType=VARCHAR},
+			</if>
+			<if test="carDoors != null and carDoors > 0">
+				carDoors = #{carDoors,jdbcType=INTEGER},
+			</if>
+			<if test="carSeats != null and carSeats > 0">
+				carSeats = #{carSeats,jdbcType=INTEGER},
+			</if>
+			<if test="displacement != null">
+				displacement = #{displacement,jdbcType=VARCHAR},
+			</if>
+			<if test="carHorsepower != null">
+				carHorsepower = #{carHorsepower,jdbcType=VARCHAR},
+			</if>
+			<if test="carEngineType != null">
+				carEngineType = #{carEngineType,jdbcType=VARCHAR},
+			</if>
+			<if test="carDrivingWay != null">
+				carDrivingWay = #{carDrivingWay,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerFuelConsumption != null">
+				ownerFuelConsumption = #{ownerFuelConsumption,jdbcType=VARCHAR},
+			</if>
+			<if test="combinedFuelConsumption != null">
+				combinedFuelConsumption = #{combinedFuelConsumption,jdbcType=VARCHAR},
+			</if>
+			<if test="vehicleWarranty != null">
+				vehicleWarranty = #{vehicleWarranty,jdbcType=VARCHAR},
+			</if>
+			<if test="transmission != null">
+				transmission = #{transmission,jdbcType=VARCHAR},
+			</if>
+			<if test="ownerScore != null">
+				ownerScore = #{ownerScore,jdbcType=VARCHAR},
+			</if>
+			<if test="isTurbo != null">
+				isTurbo = #{isTurbo,jdbcType=BIT},
+			</if>
+			<if test="carValue != null">
+				carValue = #{carValue,jdbcType=DECIMAL},
+			</if>
+			<if test="frontTyreSize != null">
+				frontTyreSize = #{frontTyreSize,jdbcType=VARCHAR},
+			</if>
+			<if test="rearTyreSize != null">
+				rearTyreSize = #{rearTyreSize,jdbcType=VARCHAR},
+			</if>
+			<if test="modelWashType != null">
+			    modelWashType=#{modelWashType},
+			</if>
+			<if test="washType != null">
+			    washType=#{washType},
+			</if>
+			<if test="imgUrl != null">
+			    imgUrl=#{imgUrl},
+			</if>
+			<if test="isValid != null">
+				isValid = #{isValid,jdbcType=INTEGER},
+			</if>
+			<if test="true">
+				modifyTime = NOW()
+			</if>
+		</set>
+		WHERE id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<sql id="page">
+		limit #{start},#{pageSize}
+	</sql>
+
+</mapper>
